@@ -3,12 +3,14 @@
 namespace LiranCo\NotificationSubscriptions\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Notifications\Events\NotificationSending;
+use LiranCo\NotificationSubscriptions\Listeners\NotificationSendingListener;
 
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-        'Illuminate\Notifications\Events\NotificationSending' => [
-            'LiranCo\NotificationSubscriptions\Listeners\NotificationSendingListener',
+        NotificationSending::class => [
+            NotificationSendingListener::class,
         ],
     ];
 
